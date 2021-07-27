@@ -37,7 +37,9 @@ class Renderer(object):
         self.path =[]
         
 
-
+    def glTuple(self, v0, v1):
+        print(v0.x)
+        print(v1.x)
 
     def glCreateWindow (self, width, height):
         self.width = int(width)
@@ -146,30 +148,25 @@ class Renderer(object):
         #     y0, y1 = y1, y0
 
 
-    def glFillTriangle(self,x0,y0,x1, y1,x2,y2):
-        x0 = int(x0)
-        y0 = int(y0)
-        x1 = int(x1)
-        y1 = int(y1)
-        x2 =int(x2)
-        y2= int(y2)
+    def glFillTriangle(self,v0,v1,v2):
+       
 
-        self.glFillTriangleSub(x0,y0,x1, y1,x2,y2)
-        self.glFillTriangleSub( x1, y1,x2,y2,x0,y0)
-        self.glFillTriangleSub( x0,y0,x2,y2,x1, y1,)
+        self.glFillTriangleSub(v0,v1,v2)
+        self.glFillTriangleSub( v1,v2,v0)
+        self.glFillTriangleSub(v0,v2,v1)
 
 
 
 
 
-    def glFillTriangleSub(self, x0,y0,x1, y1,x2,y2):
+    def glFillTriangleSub(self, v0,v1,v2):
 
-        x0 = int(x0)
-        y0 = int(y0)
-        x1 = int(x1)
-        y1 = int(y1)
-        x2 =int(x2)
-        y2= int(y2)
+        x0 = int(v0.x)
+        y0 = int(v0.y)
+        x1 = int(v1.x)
+        y1 = int(v1.y)
+        x2 =int(v2.x)
+        y2= int(v2.y)
         dx = abs(x1 - x0)
         dy = abs(y1 - y0)
         steep = (dy > dx)
